@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>타이머</title>
+</head>
+<body>
+    <h1 id="timer">3:00</h1>
+
+    <script>
+        let 시간 = 180;
+        const timerElement = document.getElementById('timer');
+
+        function updateTimer() {
+            const 분 = Math.floor(시간 / 60);
+            const 초 = 시간 % 60;
+            const 포맷초 = 초 < 10 ? "0" + 초 : 초;
+            timerElement.textContent = 분 + ":" + 포맷초;
+
+            if (시간 > 0) {
+                시간 = 시간 - 1;
+            } else {
+                clearInterval(인터벌);
+            }
+        }
+
+        updateTimer(); // 시작 즉시 한 번 출력
+        const 인터벌 = setInterval(updateTimer, 1000);
+    </script>
+</body>
+</html>
